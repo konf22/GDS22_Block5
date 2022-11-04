@@ -5,5 +5,6 @@ public enum AccessRoles {
     RegisteredCustomer,
     BestFriend,
     ExternalUser,
-    Self
+    Self;
+
 }

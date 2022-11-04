@@ -4,8 +4,8 @@ public class Profile {
     private String eMail;
     private int age;
     private String fullname;
-    private String creditCardNumber;
-    private double salary;
+    private MayBe<String> creditCardNumber;
+    private MayBe<Double> salary;
 
     private Profile bestFriend;
 
@@ -15,8 +15,8 @@ public class Profile {
         this.eMail = eMail;
         this.age = age;
         this.fullname = fullname;
-        this.creditCardNumber = creditCardNumber;
-        this.salary = salary;
+        this.creditCardNumber = new MayBe<String>(creditCardNumber);
+        this.salary = new MayBe<Double>(salary);
     }
 
     public void printPublicPage(AccessRoles role){
@@ -27,9 +27,11 @@ public class Profile {
         }
 
         System.out.println("fullname = " + fullname);
-        if (role == AccessRoles.Platform || role == AccessRoles.Self) {
+
+        /*if (role == AccessRoles.Platform || role == AccessRoles.Self) {
             System.out.println("creditCardNumber = " + creditCardNumber);
-        }
+        }*/
+        creditCardNumber.deliverValue(role);
 
         System.out.println("salary = " + salary);
         System.out.println("bestFriend = " + bestFriend);
